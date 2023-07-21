@@ -1,0 +1,85 @@
+#!/bin/bash
+# Set exit on error
+set -euxo pipefail 
+
+# This script is used to run the basecaller on a remote machine.
+REMOTE_HOST=${1:-}
+REMOTE_DOCKER=${2:-}
+DOCKER_IMAGE=${3:-}
+INPUT=${4:-}
+OUTPUT=${5:-}
+CONFIG=${6:-}
+TMPDIR=${7:-}
+
+# Check if all arguments are provided
+if [[ -z $TMPDIR ]]; then
+    >&2 echo "Usage: $0 <remote_host> <remote_docker> <docker_image> <input> <output> <config> <tmpdir>"
+    exit 1
+fi
+
+# Create temporary directory on remote machine
+RANDOM_ID=$(echo $RANDOM | md5sum | head -c 10)
+TMPDIR=$TMPDIR$RANDOM_ID/
+ssh -p 2882 $REMOTE_HOST mkdir -p $TMPDIR
+
+# Set trap to remove temporary directory on exit
+clean_up () {
+    >&2 echo Removing temp files: $REMOTE_HOST:$TMPDIR
+    ssh -p 2882 $REMOTE_HOST rm -rf $TMPDIR
+}
+trap clean_up EXIT
+
+# Send inputs to remote machine
+scp -P 2882 -r $INPUT $REMOTE_HOST:$TMPDIR
+
+# Get remote UID
+REMOTE_UID=$(ssh -p 2882 $REMOTE_HOST id -u)
+
+# Scale down chunks_per_runner for guppy-gpu:3.0.3 (to prevent memory error)
+if [[ $DOCKER_IMAGE == 'genomicpariscentre/guppy-gpu:3.0.3' ]]; then
+    params="--chunks_per_runner 512"
+else
+    params=""
+fi
+
+# Set remote UID to 0 for guppy-gpu:6.5.7 (to prevent permission error)
+if [[ $DOCKER_IMAGE == 'genomicpariscentre/guppy-gpu:6.5.7' ]]; then
+    REMOTE_UID=0
+    chowner () {
+        docker --context $REMOTE_DOCKER \
+            run \
+                --rm \
+                -v $TMPDIR:/data:rw \
+                --name $RANDOM_ID \
+                alpine:latest \
+                    chown -R $(ssh -p 2882 $REMOTE_HOST id -u):0 /data/output
+    }
+    chown_clean_up () {
+        chowner
+        clean_up
+    }
+    trap chown_clean_up  EXIT
+fi
+
+# Run basecaller on remote machine
+>&2 echo -e "Running basecaller on remote machine...\n"
+
+docker \
+    --context $REMOTE_DOCKER \
+    run \
+        --rm \
+        --gpus all \
+        -v $TMPDIR:/data:rw \
+        -u $REMOTE_UID:0 \
+        --name $RANDOM_ID \
+        $DOCKER_IMAGE \
+            guppy_basecaller $params \
+                --records_per_fastq 0 \
+                --input_path /data/$(basename $INPUT) \
+                --save_path /data/output \
+                --config $CONFIG \
+                --device "cuda:0,1:95%"
+
+
+# Get output from remote machine
+scp -P 2882 -r $REMOTE_HOST:$TMPDIR/output $OUTPUT

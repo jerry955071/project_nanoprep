@@ -1,0 +1,60 @@
+#!/bin/bash
+# Usage
+# run <workflow> <cpus> <rule>
+
+# =========================================================
+# check command line arguments
+WORKFLOW=$1
+CPUS=$2
+RULE=$3
+
+if [[ -z $CPUS ]]; then
+    echo "Usage: run <workflow> <cpus> <rule>"
+    exit 1
+fi
+
+if [[ -z $WORKFLOW ]]; then
+    echo "Usage: run <workflow> <cpus> <rule>"
+    exit 1
+fi
+
+if [[ -z $RULE ]]; then
+    echo "Usage: run <workflow> <cpus> <rule>"
+    exit 1
+fi
+# passed command line argument checks
+# =========================================================
+
+# =========================================================
+# run snakemake workflow
+DATETIME=$(date +%Y%m%d-%H:%M:%S)
+WFNAME="${WORKFLOW%.*}"
+LOG_DIR="nohup-out/${WFNAME}/"
+LOG_FILE_DRY="${LOG_DIR}/snakemake.${DATETIME}.dry"
+
+# create log directory/files
+mkdir -p nohup-out/${WFNAME}
+echo "File created by bash @${DATETIME}" > ${LOG_FILE_DRY}
+
+# dry-run snakemake 
+echo "Dry-run snakemake..." >&2 && sleep 2
+if conda run \
+    -n snakemake \
+    --no-capture-output \
+    --live-stream \
+    snakemake \
+        -c $CPUS \
+        --resources gpu=1 \
+        --use-conda \
+        -np \
+        -s $WORKFLOW \
+        $RULE \
+    > $LOG_FILE_DRY
+then 
+    echo 'LGTM!'
+    code $LOG_FILE_DRY
+else
+    echo 'Something is wrong'
+    code $LOG_FILE_DRY
+fi
+# =========================================================

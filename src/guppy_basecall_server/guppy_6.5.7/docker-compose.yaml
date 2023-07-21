@@ -1,0 +1,30 @@
+version: '3.6'
+services:
+  basecall_server:
+    image: genomicpariscentre/guppy-gpu:6.5.7
+    restart: unless-stopped
+    networks:
+      - overlay1
+    volumes:
+      - ./data:/data
+    command: [
+      "guppy_basecall_server",
+      "--port", "5566",
+      "--log_path", "/data/log",
+      "--device", "cuda:0,1:90%",
+      "--config", "dna_r9.4.1_450bps_hac.cfg",
+      "--allow_non_local",
+      "--use_tcp"
+    ]
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            device_ids: ['0', '1']
+            capabilities: [gpu]
+
+networks:
+  overlay1:
+    name: my-attachable-overlay
+    external: true

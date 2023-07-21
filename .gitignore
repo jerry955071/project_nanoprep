@@ -1,0 +1,14 @@
+# raw data
+data/
+
+# snakemake outputs
+logs/
+nohup-out/
+outputs/
+tests/
+
+# snakemake data
+.snakemake/
+
+# jupyter notebooks
+.ipynb_checkpoints/

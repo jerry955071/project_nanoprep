@@ -1,0 +1,78 @@
+#!/bin/bash
+# Usage
+# run <workflow> <cpus> <rule>
+
+# =========================================================
+# check command line arguments
+WORKFLOW=$1
+CPUS=$2
+RULE=$3
+
+if [[ -z $CPUS ]]; then
+    echo "Usage: run <workflow> <cpus> <rule>"
+    exit 1
+fi
+
+if [[ -z $WORKFLOW ]]; then
+    echo "Usage: run <workflow> <cpus> <rule>"
+    exit 1
+fi
+
+if [[ -z $RULE ]]; then
+    echo "Usage: run <workflow> <cpus> <rule>"
+    exit 1
+fi
+# passed command line argument checks
+# =========================================================
+
+# =========================================================
+# run snakemake workflow
+DATETIME=$(date +%Y%m%d-%H:%M:%S)
+WFNAME="${WORKFLOW%.*}"
+LOG_DIR="nohup-out/${WFNAME}"
+LOG_FILE_DRY="${LOG_DIR}/snakemake.${DATETIME}.dry"
+LOG_FILE_OUT="${LOG_DIR}/snakemake.${DATETIME}.out"
+
+# create log directory/files
+mkdir -p $LOG_DIR
+echo "File created by bash @${DATETIME}" > ${LOG_FILE_DRY}
+echo "File created by bash @${DATETIME}" > ${LOG_FILE_OUT}
+
+# execute snakemake
+# dry-run && run || more nohup/*.dry
+echo "Dry-run snakemake..." >&2 && sleep 2
+if conda run \
+    -n snakemake \
+    --no-capture-output \
+    --live-stream \
+    snakemake \
+        -c $CPUS \
+        --resources gpu=1 \
+        --use-conda \
+        -np \
+        -s $WORKFLOW \
+        $RULE \
+        > $LOG_FILE_DRY
+then
+    echo LGTM! && sleep 2
+    # code  $LOG_FILE_DRY
+    nohup conda run \
+        -n snakemake \
+        --no-capture-output \
+        --live-stream \
+        nohup snakemake \
+            -c $CPUS \
+            --resources gpu=1 \
+            --use-conda \
+            --wms-monitor http://127.0.0.1:8000 \
+            -s $WORKFLOW \
+            $RULE \
+        2>&1 \
+        > $LOG_FILE_OUT &
+    
+    echo "Streaming $LOG_FILE_OUT"
+    tail -f $LOG_FILE_OUT
+else
+    code $LOG_FILE_DRY
+fi
+# =========================================================

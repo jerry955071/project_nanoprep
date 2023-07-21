@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+import random, sys
+
+if __name__ == "__main__":
+    if not len(sys.argv) == 5:
+        raise ValueError(
+            f"expecting 4 arguments but {len(sys.argv) - 1} were given.\n"
+            f"{' '.join(sys.argv)}\n\n"
+            "This script samples n reads from a fastq file.\n"
+            "Usage: fastq_subset <in.fq> <out.fq> <n> <seed>"
+            )
+    else:
+        fin = sys.argv[1]
+        fout = sys.argv[2]
+        n = int(sys.argv[3])
+        seed = int(sys.argv[4])
+        
+    with open(fin, "r") as handle:
+        for nlines, line in enumerate(handle):
+            pass
+    
+    random.seed(seed)
+    randidx = random.sample(range(int(nlines / 4)), n)
+    randidx = set(randidx)
+    
+    # write output
+    WRITELINES = 0
+    handle_out = open(fout, "w") if fout != "-" else sys.stdout
+    with open(fin, "r") as handle_in:
+        for line_num, line in enumerate(handle_in):
+            if line_num % 4 == 0:
+                idx = line_num / 4
+                if idx in randidx:
+                    WRITELINES = 4
+            if WRITELINES > 0:
+                handle_out.write(line)
+                WRITELINES -= 1
+    handle_out.close()
+

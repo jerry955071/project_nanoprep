@@ -1,0 +1,259 @@
+{
+    "volumes": [
+        {
+            "real": "/home/b05b01002/HDD/project_nanoprep/",
+            "virtual": "/local",
+            "mode": "rw",
+            "is_workdir": 1
+        },
+        {
+            "real": "/home/woodydrylab/YCLlab_raw_data/YCLlab_Rawdata/RNA-seq/05_Nanopore",
+            "virtual": "/local/data/05_Nanopore",
+            "mode": "ro",
+            "is_workdir": 0
+        },
+        {
+            "real": "/home/b05b01002/HDD/Nanopore_raw",
+            "virtual": "/local/data/Nanopore_raw",
+            "mode": "ro",
+            "is_workdir": 0
+        }
+    ],
+    "guppy_versions": [
+        "6.5.7",
+        "6.0.0",
+        "5.0.7",
+        "4.0.14",
+        "3.0.3"
+    ],
+    "samples": [
+        {
+            "id": "ERR3588903",
+            "species": "synthetic_sirv",
+            "flowcell": "FLO-MIN106",
+            "kit": "PCS109",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "SAMEA6066414",
+            "fastq": "data/public_data/output/ERR3588903/ERR3588903.fastq",
+            "p5_sense": "ATCGCCTACCGTGACAAGAAAGTTGTCGGTGTCTTTGTGTTTCTGTTGGTGCTGATATTGCTGGG",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGTCACAAAGACACCGACAACTTTCTTGTCACGGTAGGCGAT",
+            "ref_transcripts": "data/references/SIRV/SIRV_isoforms_Lot00141_multi-fasta-annotation_C_170612a_transcript.fasta"
+        },
+        {
+            "id": "ERR3588905",
+            "species": "dme",
+            "flowcell": "FLO-MIN106",
+            "kit": "PCS109",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "SAMEA6066416",
+            "fastq": "data/public_data/output/ERR3588905/ERR3588905.fastq",
+            "p5_sense": "ATCGCCTACCGTGACAAGAAAGTTGTCGGTGTCTTTGTGTTTCTGTTGGTGCTGATATTGCTGGG",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGTCACAAAGACACCGACAACTTTCTTGTCACGGTAGGCGAT",
+            "ref_transcripts": "data/references/Dme/Drosophila_melanogaster.BDGP6.32.110.transcripts.fa"
+        },
+        {
+            "id": "SRR13057603",
+            "species": "synthetic_sequin",
+            "flowcell": "FLO-MIN106",
+            "kit": "PBK004 (Barcode 1) + PCS109",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "SAMN15162796",
+            "fastq": "data/public_data/output/SRR13057603/SRR13057603.fastq",
+            "p5_sense": "ATCGCCTACCGTGACAAGAAAGTTGTCGGTGTCTTTGTGTTTCTGTTGGTGCTGATATTGC",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGTCACAAAGACACCGACAACTTTCTTGTCACGGTAGGCGAT",
+            "ref_transcripts": "data/references/Sequin/LongReadRNA/sequins/annotations/rnasequin_sequences_2.4.fa"
+        },
+        {
+            "id": "SRR13057604",
+            "species": "synthetic_sequin",
+            "flowcell": "FLO-MIN106",
+            "kit": "PBK004 (Barcode 2) + PCS109",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "SAMN15162795",
+            "fastq": "data/public_data/output/SRR13057603/SRR13057603.fastq",
+            "p5_sense": "ATCGCCTACCGTGACTCGATTCCGTTTGTAGTCGTCTGTTTTCTGTTGGTGCTGATATTGC",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGTACAGACGACTACAAACGGAATCGAGTCACGGTAGGCGAT",
+            "ref_transcripts": "data/references/Sequin/LongReadRNA/sequins/annotations/rnasequin_sequences_2.4.fa"
+        },
+        {
+            "id": "SRR13057605",
+            "species": "synthetic_sequin",
+            "flowcell": "FLO-MIN106",
+            "kit": "PBK004 (Barcode 3) + PCS109",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "SAMN15162794",
+            "fastq": "data/public_data/output/SRR13057603/SRR13057603.fastq",
+            "p5_sense": "ATCGCCTACCGTGACGAGTCTTGTGTCCCAGTTACCAGGTTTCTGTTGGTGCTGATATTGC",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGTCCTGGTAACTGGGACACAAGACTCGTCACGGTAGGCGAT",
+            "ref_transcripts": "data/references/Sequin/LongReadRNA/sequins/annotations/rnasequin_sequences_2.4.fa"
+        },
+        {
+            "id": "SRR13057606",
+            "species": "synthetic_sequin",
+            "flowcell": "FLO-MIN106",
+            "kit": "PBK004 (Barcode 4) + PCS109",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "SAMN15162793",
+            "fastq": "data/public_data/output/SRR13057603/SRR13057603.fastq",
+            "p5_sense": "ATCGCCTACCGTGACTTCGGATTCTATCGTGTTTCCCTATTTCTGTTGGTGCTGATATTGC",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGTTAGGGAAACACGATAGAATCCGAAGTCACGGTAGGCGAT",
+            "ref_transcripts": "data/references/Sequin/LongReadRNA/sequins/annotations/rnasequin_sequences_2.4.fa"
+        },
+        {
+            "id": "ptr_108_bio1",
+            "species": "ptr",
+            "flowcell": "FLO-MIN106",
+            "kit": "PCS108",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "bio1",
+            "fast5_dir": "data/Nanopore_raw/20181026_Populus_trichocarpa_xylem/20181026_Populus_trichocarpa_xylem/multi_read_fast5",
+            "read_id_list": "data/Nanopore_raw/20181026_Populus_trichocarpa_xylem/20181026_Populus_trichocarpa_xylem/fastq/sequencing_summary.txt",
+            "p5_sense": "TTTCTGTTGGTGCTGATATTGCTGCCATTACGGCCGGG",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGT",
+            "ref_transcripts": "data/references/Ptr/annotation/Ptrichocarpa_533_v4.1.transcript.fa.gz"
+        },
+        {
+            "id": "ptr_108_bio2",
+            "species": "ptr",
+            "flowcell": "FLO-MIN106",
+            "kit": "PCS108",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "bio2",
+            "fast5_dir": "data/Nanopore_raw/20181126_Populus_trichocarpa_xylem/20181126_Populus_trichocarpa_xylem/multi_read_fast5",
+            "read_id_list": "data/Nanopore_raw/20181126_Populus_trichocarpa_xylem/20181126_Populus_trichocarpa_xylem/fastQ/sequencing_summary.txt",
+            "p5_sense": "TTTCTGTTGGTGCTGATATTGCTGCCATTACGGCCGGG",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGT",
+            "ref_transcripts": "data/references/Ptr/annotation/Ptrichocarpa_533_v4.1.transcript.fa.gz"
+        },
+        {
+            "id": "ptr_108_bio3",
+            "species": "ptr",
+            "flowcell": "FLO-MIN106",
+            "kit": "PCS108",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "bio3",
+            "fast5_dir": "data/Nanopore_raw/20190129_Populus_trichocarpa_xylem/20190129_Populus_trichocarpa_xylem/fast5",
+            "read_id_list": "data/Nanopore_raw/20190129_Populus_trichocarpa_xylem/20190129_Populus_trichocarpa_xylem/fastq/sequencing_summary.txt",
+            "p5_sense": "TTTCTGTTGGTGCTGATATTGCTGCCATTACGGCCGGG",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGT",
+            "ref_transcripts": "data/references/Ptr/annotation/Ptrichocarpa_533_v4.1.transcript.fa.gz"
+        },
+        {
+            "id": "egr_108_bio1",
+            "species": "egr",
+            "flowcell": "FLO-MIN106",
+            "kit": "PCS108",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "bio1",
+            "fast5_dir": "data/Nanopore_raw/20190906_Eucalyptus_grandis_xylem_tree3/20190906_Eucalyptus_grandis_xylem/fast5",
+            "read_id_list": "data/Nanopore_raw/20190906_Eucalyptus_grandis_xylem_tree3/20190906_Eucalyptus_grandis_xylem/fastq/sequencing_summary.txt",
+            "p5_sense": "TTTCTGTTGGTGCTGATATTGCTGCCATTACGGCCGGG",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGT",
+            "ref_transcripts": "data/references/Egr/Phytozome/PhytozomeV12/Egrandis/annotation/Egrandis_297_v2.0.transcript.fa.gz"
+        },
+        {
+            "id": "egr_108_bio2",
+            "species": "egr",
+            "flowcell": "FLO-MIN106",
+            "kit": "PCS108",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "bio2",
+            "fast5_dir": "data/Nanopore_raw/20191009_Eucalyptus_grandis_xylem_tree5/20191009_Eucalyptus_grandis_xylem/EgX5/EgX5/20191009_1446_MN29172_FAK49112_88ab59a6/fast5",
+            "read_id_list": "data/Nanopore_raw/20191009_Eucalyptus_grandis_xylem_tree5/20191009_Eucalyptus_grandis_xylem/EgX5/EgX5/20191009_1446_MN29172_FAK49112_88ab59a6/readlist.txt",
+            "p5_sense": "TTTCTGTTGGTGCTGATATTGCTGCCATTACGGCCGGG",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGT",
+            "ref_transcripts": "data/references/Egr/Phytozome/PhytozomeV12/Egrandis/annotation/Egrandis_297_v2.0.transcript.fa.gz"
+        },
+        {
+            "id": "egr_108_bio3",
+            "species": "egr",
+            "flowcell": "FLO-MIN106",
+            "kit": "PCS108",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "bio3",
+            "fast5_dir": "data/Nanopore_raw/20191031_Eucalyptus_grandis_xylem_tree7/20191031_EgX7/20191031_EgX7/EgX7/20191031_1348_MN29172_FAK49119_f9d124d7/fast5",
+            "read_id_list": "data/Nanopore_raw/20191031_Eucalyptus_grandis_xylem_tree7/20191031_EgX7/20191031_EgX7/EgX7/20191031_1348_MN29172_FAK49119_f9d124d7/readlist.txt",
+            "p5_sense": "TTTCTGTTGGTGCTGATATTGCTGCCATTACGGCCGGG",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGT",
+            "ref_transcripts": "data/references/Egr/Phytozome/PhytozomeV12/Egrandis/annotation/Egrandis_297_v2.0.transcript.fa.gz"
+        },
+        {
+            "id": "ptr_109_bio1",
+            "species": "ptr",
+            "flowcell": "FLO-MIN106",
+            "kit": "PCS109",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "bio1",
+            "fast5_dir": "data/05_Nanopore/ONT_Populus_trichocarpa/20200716_Populus_trichocarpa_xylem/20200716_Ptr_xylem_Bio4/20200716_Ptr_xylem_Bio4/20200716_0954_MN33848_FAO02979_f5fe3135/fast5",
+            "read_id_list": "data/05_Nanopore/ONT_Populus_trichocarpa/20200716_Populus_trichocarpa_xylem/20200716_Ptr_xylem_Bio4/20200716_Ptr_xylem_Bio4/20200716_0954_MN33848_FAO02979_f5fe3135/sequencing_summary_FAO02979_9f532976.txt",
+            "p5_sense": "ATCGCCTACCGTGACAAGAAAGTTGTCGGTGTCTTTGTGTTTCTGTTGGTGCTGATATTGC",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGTCACAAAGACACCGACAACTTTCTTGTCACGGTAGGCGAT",
+            "ref_transcripts": "data/references/Ptr/annotation/Ptrichocarpa_533_v4.1.transcript.fa.gz"
+        },
+        {
+            "id": "ptr_109_bio2",
+            "species": "ptr",
+            "flowcell": "FLO-MIN106",
+            "kit": "PCS109",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "bio2",
+            "fast5_dir": "data/05_Nanopore/ONT_Populus_trichocarpa/20201221_Populus_trichocarpa_xylem/20201221_Ptr_xylem_Bio5/20201221_Ptr_xylem_Bio5/20201221_1320_MN29172_FAP11218_d538890b/fast5",
+            "read_id_list": "data/05_Nanopore/ONT_Populus_trichocarpa/20201221_Populus_trichocarpa_xylem/20201221_Ptr_xylem_Bio5/20201221_Ptr_xylem_Bio5/20201221_1320_MN29172_FAP11218_d538890b/sequencing_summary_FAP11218_86cdd136.txt",
+            "p5_sense": "ATCGCCTACCGTGACAAGAAAGTTGTCGGTGTCTTTGTGTTTCTGTTGGTGCTGATATTGC",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGTCACAAAGACACCGACAACTTTCTTGTCACGGTAGGCGAT",
+            "ref_transcripts": "data/references/Ptr/annotation/Ptrichocarpa_533_v4.1.transcript.fa.gz"
+        },
+        {
+            "id": "egr_109_bio1",
+            "species": "egr",
+            "flowcell": "FLO-MIN106",
+            "kit": "PCS109",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "bio1",
+            "fast5_dir": "data/05_Nanopore/ONT_Eucalyptus_grandis/20200906_Eucalyptus_grandis_xylem_tree2/20200906_EgX2_Bio4/20200906_EgX2_Bio4/20200906_1255_MN29172_FAO03075_8529fe59/fast5",
+            "read_id_list": "data/05_Nanopore/ONT_Eucalyptus_grandis/20200906_Eucalyptus_grandis_xylem_tree2/20200906_EgX2_Bio4/20200906_EgX2_Bio4/20200906_1255_MN29172_FAO03075_8529fe59/sequencing_summary_FAO03075_de135c6c.txt",
+            "p5_sense": "ATCGCCTACCGTGACAAGAAAGTTGTCGGTGTCTTTGTGTTTCTGTTGGTGCTGATATTGC",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGTCACAAAGACACCGACAACTTTCTTGTCACGGTAGGCGAT",
+            "ref_transcripts": "data/references/Egr/Phytozome/PhytozomeV12/Egrandis/annotation/Egrandis_297_v2.0.transcript.fa.gz"
+        },
+        {
+            "id": "egr_109_bio2",
+            "species": "egr",
+            "flowcell": "FLO-MIN106",
+            "kit": "PCS109",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "bio2",
+            "fast5_dir": "data/05_Nanopore/ONT_Eucalyptus_grandis/20210113_Eucalyptus_grandis_xylem_tree1/20210113_Egr_xylem_Bio5/20210113_Egr_xylem_Bio5/20210113_1610_MN29172_FAP21443_612c7c17/fast5",
+            "read_id_list": "data/05_Nanopore/ONT_Eucalyptus_grandis/20210113_Eucalyptus_grandis_xylem_tree1/20210113_Egr_xylem_Bio5/20210113_Egr_xylem_Bio5/20210113_1610_MN29172_FAP21443_612c7c17/sequencing_summary_FAP21443_7a47846c.txt",
+            "p5_sense": "ATCGCCTACCGTGACAAGAAAGTTGTCGGTGTCTTTGTGTTTCTGTTGGTGCTGATATTGC",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGTCACAAAGACACCGACAACTTTCTTGTCACGGTAGGCGAT",
+            "ref_transcripts": "data/references/Egr/Phytozome/PhytozomeV12/Egrandis/annotation/Egrandis_297_v2.0.transcript.fa.gz"
+        },
+        {
+            "id": "lch_109_bio1",
+            "species": "lch",
+            "flowcell": "FLO-MIN106",
+            "kit": "PCS109",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "bio1",
+            "fast5_dir": "data/05_Nanopore/ONT_Liriodendron_chinense/20200609_Liriodendron_chinense_xylem_tree6/20200609_LC_xylem6/LCX6/20200608_1742_MN33848_FAO01484_5de7b034/fast5",
+            "read_id_list": "data/05_Nanopore/ONT_Liriodendron_chinense/20200609_Liriodendron_chinense_xylem_tree6/20200609_LC_xylem6/LCX6/20200608_1742_MN33848_FAO01484_5de7b034/sequencing_summary_FAO01484_0665516b.txt",
+            "p5_sense": "ATCGCCTACCGTGACAAGAAAGTTGTCGGTGTCTTTGTGTTTCTGTTGGTGCTGATATTGC",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGTCACAAAGACACCGACAACTTTCTTGTCACGGTAGGCGAT",
+            "ref_transcripts": "data/references/Lch/Liriodendron_chinense_transcripts_20200309.fa"
+        },
+        {
+            "id": "lch_109_bio2",
+            "species": "lch",
+            "flowcell": "FLO-MIN106",
+            "kit": "PCS109",
+            "config": "dna_r9.4.1_450bps_hac.cfg",
+            "biosample": "bio2",
+            "fast5_dir": "data/05_Nanopore/ONT_Liriodendron_chinense/20200616_Liriodendron_chinense_xylem_tree5/20200616_LX5/LX5/20200616_1530_MN33848_FAO01395_e21f360f/fast5",
+            "read_id_list": "data/05_Nanopore/ONT_Liriodendron_chinense/20200616_Liriodendron_chinense_xylem_tree5/20200616_LX5/LX5/20200616_1530_MN33848_FAO01395_e21f360f/sequencing_summary_FAO01395_7e37cba2.txt",
+            "p5_sense": "ATCGCCTACCGTGACAAGAAAGTTGTCGGTGTCTTTGTGTTTCTGTTGGTGCTGATATTGC",
+            "p3_sense": "GAAGATAGAGCGACAGGCAAGTCACAAAGACACCGACAACTTTCTTGTCACGGTAGGCGAT",
+            "ref_transcripts": "data/references/Lch/Liriodendron_chinense_transcripts_20200309.fa"
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+#!/usr/bin/env python
+import os, sys, pysam, json, logging
+
+if __name__ == "__main__":
+    # set logging config
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="[%(asctime)s] %(message)s",
+        datefmt="%H:%M:%S"
+    )
+    if not len(sys.argv) == 3:
+        raise ValueError(
+            f"expecting 4 arguments but {len(sys.argv) - 1} were given.\n"
+            f"{' '.join(sys.argv)}\n\n"
+            "This script samples n reads from a fastq file.\n"
+            "Usage: get_transcript_coverage <fin.sam> <fout.json>"
+            )
+    else:
+        fin = sys.argv[1]
+        fout = sys.argv[2]
+        logging.info("Input file: %s", fin)
+        logging.info("Output file: %s", fout)
+        
+    samfile = pysam.AlignmentFile(fin, "r")
+    coverages = {}
+    for seg in samfile:
+        if seg.is_unmapped:
+            coverages[seg.query_name] = None
+        else:
+            ref_length = samfile.get_reference_length(seg.reference_name)
+            mapped_ref_length = seg.reference_length
+            coverages[seg.query_name] = mapped_ref_length / ref_length
+    
+    os.makedirs(os.path.dirname(fout), exist_ok=True)
+    with open(fout, "w") as handle:
+        handle.write(json.dumps(coverages, indent=4))
+    logging.info("Done.")
